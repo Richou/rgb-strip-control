@@ -18,7 +18,6 @@ class RGBControl {
         void _set_reset_settings_route();
     public:
         void initialize();
-        void start();
-        void setRoutes();
+        void perform();
         void handleClient();
 };

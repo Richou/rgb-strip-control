@@ -7,6 +7,7 @@ void setup(void){
   Serial.begin(9600);
   rgbControl = new RGBControl();
   rgbControl->initialize();
+  rgbControl->perform();
 }
 
 void loop(void){

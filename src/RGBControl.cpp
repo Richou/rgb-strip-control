@@ -9,12 +9,14 @@ void RGBControl::initialize() {
     }
 }
 
-void RGBControl::start() {
-    server->begin();
-}
-
 void RGBControl::handleClient() {
     server->handleClient();
+}
+
+void RGBControl::perform() {
+    _set_color_route();
+    _set_reset_settings_route();
+    server->begin();
 }
 
 void RGBControl::_set_color_route() {
