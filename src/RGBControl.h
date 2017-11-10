@@ -7,9 +7,9 @@ class RGBControl {
     private:
         HotpointManager* hotpointManager;
         ESP8266WebServer* server;
-        const uint8_t red_output_pin = D6;
-        const uint8_t green_output_pin = D7;
-        const uint8_t blue_output_pin = D5;
+        const uint8_t red_output_pin = D5;
+        const uint8_t green_output_pin = D6;
+        const uint8_t blue_output_pin = D7;
         const String red_param_key = "red";
         const String green_param_key = "green";
         const String blue_param_key = "blue";

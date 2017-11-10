@@ -35,7 +35,7 @@ void RGBControl::_set_color_route() {
             analogWrite(blue_output_pin, blueRange);
             server->send(200, "application/json", "{}");
         } else {
-            server->send(400, "application/json", "{}");
+            server->send(400, "application/json", "{\"code\": \"ERR001\", \"message\": \"One of the argument red|green|blue is missing.\"}");
         }
       });
 }
