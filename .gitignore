@@ -2,4 +2,3 @@
 .piolibdeps
 .vscode
 .vscode/c_cpp_properties.json
-src/config/configuration.h
