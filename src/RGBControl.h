@@ -1,4 +1,6 @@
 #include "HotpointManager.h"
+#include "LCDScreenManager.h"
+#include <ESP8266WiFi.h>
 #include <ESP8266WebServer.h>
 
 #define RGB_PWMRANGE 255
@@ -7,6 +9,7 @@ class RGBControl {
     private:
         HotpointManager* hotpointManager;
         ESP8266WebServer* server;
+        LCDScreenManager* screen;
         const uint8_t red_output_pin = D5;
         const uint8_t green_output_pin = D6;
         const uint8_t blue_output_pin = D7;

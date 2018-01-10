@@ -2,10 +2,17 @@
 #include <Arduino.h>
 
 void RGBControl::initialize() {
+    Serial.begin(9600);
     hotpointManager = new HotpointManager();
+    screen = new LCDScreenManager();
+    screen->initialize();
+    screen->printText("Booting system ...");
     if (hotpointManager->connectOnWifi()) {
         server = new ESP8266WebServer(80);
         analogWriteRange(RGB_PWMRANGE);
+        screen->clear();
+        screen->printText("Ip Address :");
+        screen->printText(WiFi.localIP().toString());
     }
 }
 
