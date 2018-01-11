@@ -12,5 +12,6 @@ class LCDScreenManager {
     public:
         void initialize();
         void clear();
-        void printText(const String &text);
+        void println(const String &text);
+        void print(const String &text);
 };

@@ -12,9 +12,16 @@ void LCDScreenManager::clear() {
     display->setCursor(0,0);
 }
 
-void LCDScreenManager::printText(const String &text) {
+void LCDScreenManager::println(const String &text) {
     display->setTextSize(1);
     display->setTextColor(WHITE);
     display->println(text);
+    display->display();
+}
+
+void LCDScreenManager::print(const String &text) {
+    display->setTextSize(1);
+    display->setTextColor(WHITE);
+    display->print(text);
     display->display();
 }

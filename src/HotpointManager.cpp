@@ -7,6 +7,10 @@ bool HotpointManager::connectOnWifi() {
     return true;
 }
 
+void HotpointManager::setCallBack(void (*callback)(WiFiManager* myWiFiManager) ) {
+    wifiManager.setAPCallback(callback);
+}
+
 void HotpointManager::reset() {
     wifiManager.resetSettings();
 }

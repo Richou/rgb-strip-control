@@ -1,18 +1,36 @@
 #include "RGBControl.h"
 #include <Arduino.h>
 
+// Yes that's ugly, but I had to do like so ...
+void configModeCallback(WiFiManager *myWiFiManager) {
+    LCDScreenManager* screen = new LCDScreenManager();
+    screen->initialize();
+    screen->clear();
+    screen->println("Configure WiFi On");
+    screen->print("SSID : ");
+    screen->println(myWiFiManager->getConfigPortalSSID());
+    screen->print("IP : ");
+    screen->println(WiFi.softAPIP().toString());
+}
+
 void RGBControl::initialize() {
     Serial.begin(9600);
-    hotpointManager = new HotpointManager();
     screen = new LCDScreenManager();
     screen->initialize();
-    screen->printText("Booting system ...");
+    screen->println("Booting system ...");
+    hotpointManager = new HotpointManager();
+    hotpointManager->setCallBack(configModeCallback);
+    delay(200);
+    screen->clear();
+    screen->println("Connecting to WiFi ...");
     if (hotpointManager->connectOnWifi()) {
         server = new ESP8266WebServer(80);
         analogWriteRange(RGB_PWMRANGE);
         screen->clear();
-        screen->printText("Ip Address :");
-        screen->printText(WiFi.localIP().toString());
+        screen->println("Connected on : ");
+        screen->println(WiFi.SSID());
+        screen->print("Ip : ");
+        screen->println(WiFi.localIP().toString());
     }
 }
 
