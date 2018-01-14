@@ -9,6 +9,7 @@
 class LCDScreenManager {
     private:
         Adafruit_SSD1306* display;
+        void _setDefaultTextAndColor();
     public:
         void initialize();
         void clear();

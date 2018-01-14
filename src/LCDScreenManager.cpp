@@ -13,15 +13,18 @@ void LCDScreenManager::clear() {
 }
 
 void LCDScreenManager::println(const String &text) {
-    display->setTextSize(1);
-    display->setTextColor(WHITE);
+    _setDefaultTextAndColor();
     display->println(text);
     display->display();
 }
 
 void LCDScreenManager::print(const String &text) {
-    display->setTextSize(1);
-    display->setTextColor(WHITE);
+    _setDefaultTextAndColor();
     display->print(text);
     display->display();
+}
+
+void LCDScreenManager::_setDefaultTextAndColor() {
+    display->setTextSize(1);
+    display->setTextColor(WHITE);
 }
