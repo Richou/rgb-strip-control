@@ -13,6 +13,7 @@ class LCDScreenManager {
     public:
         void initialize();
         void clear();
+        void displaySplashscreen();
         void println(const String &text);
         void print(const String &text);
 };

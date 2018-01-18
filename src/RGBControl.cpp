@@ -17,10 +17,10 @@ void RGBControl::initialize() {
     Serial.begin(9600);
     screen = new LCDScreenManager();
     screen->initialize();
-    screen->println("Booting system ...");
+    screen->displaySplashscreen();
+    delay(3000);
     hotpointManager = new HotpointManager();
     hotpointManager->setCallBack(configModeCallback);
-    delay(200);
     screen->clear();
     screen->println("Connecting to WiFi ...");
     if (hotpointManager->connectOnWifi()) {

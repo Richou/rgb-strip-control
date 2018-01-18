@@ -7,6 +7,16 @@ void LCDScreenManager::initialize() {
     display->setCursor(0,0);
 }
 
+void LCDScreenManager::displaySplashscreen() {
+    display->setCursor(0, 0);
+    display->setTextSize(2);
+    display->setTextColor(WHITE);
+    display->println("  Sin4x's");
+    display->setTextSize(1);
+    display->println("      Industries");
+    display->display();
+}
+
 void LCDScreenManager::clear() {
     display->clearDisplay();
     display->setCursor(0,0);
@@ -25,6 +35,7 @@ void LCDScreenManager::print(const String &text) {
 }
 
 void LCDScreenManager::_setDefaultTextAndColor() {
+    display->setFont();
     display->setTextSize(1);
     display->setTextColor(WHITE);
 }
