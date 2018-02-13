@@ -15,6 +15,7 @@ void configModeCallback(WiFiManager *myWiFiManager) {
 
 void RGBControl::initialize() {
     Serial.begin(9600);
+    _turn_off_leds();
     screen = new LCDScreenManager();
     screen->initialize();
     screen->displaySplashscreen();
@@ -42,6 +43,13 @@ void RGBControl::perform() {
     _set_color_route();
     _set_reset_settings_route();
     server->begin();
+}
+
+void RGBControl::_turn_off_leds() {
+    Serial.println("Shutting down leds");
+    analogWrite(red_output_pin, 1);
+    analogWrite(green_output_pin, 1);
+    analogWrite(blue_output_pin, 1);
 }
 
 void RGBControl::_set_color_route() {
